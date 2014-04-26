@@ -25,19 +25,48 @@
     
     if (self)
     {
-        
+        _colourGrid=[[CRColourGrid alloc]initWithWidth:10 andHeight:10];
     }
+    
     return self;
 }
 
 - (void)drawRect:(CGRect)rect
 {
-        // Drawing code
-    CGRect rectangle = CGRectMake(0, 100, 320, 100);
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.5);
-    CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 0.5);
-    CGContextFillRect(context, rectangle);
+    
+    for (int x=0; x<10; ++x)
+    {
+        for (int y=0; y<10; ++y)
+        {
+            CGRect rectangle = CGRectMake(x*20, y*20, 20, 20);
+            
+            int colour=[_colourGrid colourAtLocationX:x andY:y];
+            
+            switch (colour) {
+                case 0:
+                    CGContextSetRGBFillColor(context, 1.0, 0.0, 0.0, 0.5);
+                    break;
+                case 1:
+                    CGContextSetRGBFillColor(context, 0.0, 1.0, 0.0, 0.5);
+                    break;
+                case 2:
+                    CGContextSetRGBFillColor(context, 0.0, 0.0, 1.0, 0.5);
+                    break;
+                case 3:
+                    CGContextSetRGBFillColor(context, 1.0, 1.0, 0.0, 0.5);
+                    break;
+                    
+                default:
+                    CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.5);
+                    break;
+            }
+            
+            CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 0.5);
+            CGContextFillRect(context, rectangle);
+        }
+    }
+        // Drawing code
     
 }
 
