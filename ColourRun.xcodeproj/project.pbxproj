@@ -23,6 +23,7 @@
 		2819687F190C57EF003EBD2F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2819687D190C57EF003EBD2F /* InfoPlist.strings */; };
 		28196881190C57EF003EBD2F /* ColourRunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28196880190C57EF003EBD2F /* ColourRunTests.m */; };
 		2819688C190C5A72003EBD2F /* CRColourGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 2819688B190C5A72003EBD2F /* CRColourGrid.m */; };
+		2819688F190C5EAD003EBD2F /* CRGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2819688E190C5EAD003EBD2F /* CRGameView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		28196880190C57EF003EBD2F /* ColourRunTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColourRunTests.m; sourceTree = "<group>"; };
 		2819688A190C5A72003EBD2F /* CRColourGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRColourGrid.h; sourceTree = "<group>"; };
 		2819688B190C5A72003EBD2F /* CRColourGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRColourGrid.m; sourceTree = "<group>"; };
+		2819688D190C5EAD003EBD2F /* CRGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRGameView.h; sourceTree = "<group>"; };
+		2819688E190C5EAD003EBD2F /* CRGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRGameView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,8 @@
 				28196859190C57EF003EBD2F /* Supporting Files */,
 				2819688A190C5A72003EBD2F /* CRColourGrid.h */,
 				2819688B190C5A72003EBD2F /* CRColourGrid.m */,
+				2819688D190C5EAD003EBD2F /* CRGameView.h */,
+				2819688E190C5EAD003EBD2F /* CRGameView.m */,
 			);
 			path = ColourRun;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2819688C190C5A72003EBD2F /* CRColourGrid.m in Sources */,
+				2819688F190C5EAD003EBD2F /* CRGameView.m in Sources */,
 				2819685F190C57EF003EBD2F /* main.m in Sources */,
 				28196863190C57EF003EBD2F /* CRAppDelegate.m in Sources */,
 				2819686C190C57EF003EBD2F /* CRViewController.m in Sources */,
