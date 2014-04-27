@@ -33,6 +33,10 @@
     [_gameView setColour:colour.intValue];
 }
 
+-(IBAction)restartButtonPressed:(id)sender
+{
+    [_gameView restart];
+}
 
 
 

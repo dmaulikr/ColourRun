@@ -71,7 +71,6 @@
 
 -(void)checkNewCell:(CRColourCell*)newCell againstCurrentCell:(CRColourCell*)currentCell
 {
-    NSLog(@"Tested colour %d,%d for (%d,%d) and (%d,%d)",currentCell.colour,newCell.colour, currentCell.x,currentCell.y,newCell.x,newCell.y);
     if (newCell.colour==currentCell.colour)
     {
             //merge cells
@@ -79,12 +78,8 @@
         NSMutableArray* currentGroup=currentCell.group;
         NSMutableArray* newGroup=newCell.group;
         
-        NSLog(@"Found matching colour");
-        
-        
         if (currentGroup!=newGroup)
         {
-            NSLog(@"Found different groups");
             for ( CRColourCell* tempCell in newGroup)
             {
                 [currentGroup addObject:tempCell];

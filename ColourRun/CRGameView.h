@@ -14,8 +14,11 @@
 @interface CRGameView : UIView
 {
     CRColourGrid* _colourGrid;
+    int _cellHeight;
+    int _cellWidth;
 }
 
 -(void)setColour:(int)newColour;
+-(void)restart;
 
 @end

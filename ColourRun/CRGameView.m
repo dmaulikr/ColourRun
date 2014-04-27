@@ -28,7 +28,9 @@ int MAX_WIDTH=10;
     
     if (self)
     {
-        _colourGrid=[[CRColourGrid alloc]initWithWidth:MAX_WIDTH andHeight:MAX_HEIGHT];
+        _cellHeight=self.frame.size.height/MAX_HEIGHT;
+        _cellWidth=self.frame.size.width/MAX_WIDTH;
+        [self restart];
     }
     
     return self;
@@ -42,7 +44,7 @@ int MAX_WIDTH=10;
     {
         for (int y=0; y<MAX_HEIGHT; ++y)
         {
-            CGRect rectangle = CGRectMake(x*20, y*20, 20, 20);
+            CGRect rectangle = CGRectMake(x*_cellWidth, y*_cellHeight, _cellWidth, _cellHeight);
             
             CRColourCell* colourCell=[_colourGrid colourAtLocationX:x andY:y];
             
@@ -83,8 +85,8 @@ int MAX_WIDTH=10;
     
     CGPoint location=[touch locationInView:self];
     
-    int x=location.x/20;
-    int y=location.y/20;
+    int x=location.x/_cellWidth;
+    int y=location.y/_cellHeight;
     
     if (x>=0 && x<MAX_WIDTH && y>=0 && y<MAX_HEIGHT)
     {
@@ -96,8 +98,6 @@ int MAX_WIDTH=10;
         }
         
         [self setNeedsDisplay];
-        
-        NSLog(@"Colour %d",selectedCell.colour);
     }
 }
 
@@ -106,6 +106,12 @@ int MAX_WIDTH=10;
 {
     [_colourGrid setColour:newColour];
 
+    [self setNeedsDisplay];
+}
+
+-(void)restart
+{
+    _colourGrid=[[CRColourGrid alloc]initWithWidth:MAX_WIDTH andHeight:MAX_HEIGHT];
     [self setNeedsDisplay];
 }
 
