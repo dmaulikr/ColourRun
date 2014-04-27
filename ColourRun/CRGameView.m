@@ -41,26 +41,10 @@
         {
             CGRect rectangle = CGRectMake(x*20, y*20, 20, 20);
             
-            int colour=[_colourGrid colourAtLocationX:x andY:y];
+            CRColourCell* colourCell=[_colourGrid colourAtLocationX:x andY:y];
+            struct Colour colour=colourCell.colour;
             
-            switch (colour) {
-                case 0:
-                    CGContextSetRGBFillColor(context, 1.0, 0.0, 0.0, 0.5);
-                    break;
-                case 1:
-                    CGContextSetRGBFillColor(context, 0.0, 1.0, 0.0, 0.5);
-                    break;
-                case 2:
-                    CGContextSetRGBFillColor(context, 0.0, 0.0, 1.0, 0.5);
-                    break;
-                case 3:
-                    CGContextSetRGBFillColor(context, 1.0, 1.0, 0.0, 0.5);
-                    break;
-                    
-                default:
-                    CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.5);
-                    break;
-            }
+            CGContextSetRGBFillColor(context,colour.r,colour.g,colour.b,colour.alpha);
             
             CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 0.5);
             CGContextFillRect(context, rectangle);

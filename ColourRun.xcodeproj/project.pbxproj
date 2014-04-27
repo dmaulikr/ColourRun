@@ -24,6 +24,7 @@
 		28196881190C57EF003EBD2F /* ColourRunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28196880190C57EF003EBD2F /* ColourRunTests.m */; };
 		2819688C190C5A72003EBD2F /* CRColourGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 2819688B190C5A72003EBD2F /* CRColourGrid.m */; };
 		2819688F190C5EAD003EBD2F /* CRGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2819688E190C5EAD003EBD2F /* CRGameView.m */; };
+		28196895190CF962003EBD2F /* CRColourCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28196894190CF962003EBD2F /* CRColourCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		2819688B190C5A72003EBD2F /* CRColourGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRColourGrid.m; sourceTree = "<group>"; };
 		2819688D190C5EAD003EBD2F /* CRGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRGameView.h; sourceTree = "<group>"; };
 		2819688E190C5EAD003EBD2F /* CRGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRGameView.m; sourceTree = "<group>"; };
+		28196893190CF962003EBD2F /* CRColourCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRColourCell.h; sourceTree = "<group>"; };
+		28196894190CF962003EBD2F /* CRColourCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRColourCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +170,8 @@
 			children = (
 				2819688A190C5A72003EBD2F /* CRColourGrid.h */,
 				2819688B190C5A72003EBD2F /* CRColourGrid.m */,
+				28196893190CF962003EBD2F /* CRColourCell.h */,
+				28196894190CF962003EBD2F /* CRColourCell.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 			files = (
 				2819688C190C5A72003EBD2F /* CRColourGrid.m in Sources */,
 				2819688F190C5EAD003EBD2F /* CRGameView.m in Sources */,
+				28196895190CF962003EBD2F /* CRColourCell.m in Sources */,
 				2819685F190C57EF003EBD2F /* main.m in Sources */,
 				28196863190C57EF003EBD2F /* CRAppDelegate.m in Sources */,
 				2819686C190C57EF003EBD2F /* CRViewController.m in Sources */,

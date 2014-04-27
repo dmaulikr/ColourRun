@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CRColourCell.h"
 
 @interface CRColourGrid : NSObject
 {
@@ -16,7 +17,7 @@
 }
 
 -(id)initWithWidth:(int)width andHeight:(int)height;
--(int) colourAtLocationX:(int)x andY:(int)y;
+-(CRColourCell*) colourAtLocationX:(int)x andY:(int)y;
 
 
 

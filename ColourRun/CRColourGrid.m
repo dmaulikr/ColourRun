@@ -26,9 +26,7 @@
             
             for (int y=0;y<width;++y)
             {
-                int r = arc4random() % 6;
-                
-                [colourLine addObject:[NSNumber numberWithInt:r]];
+                [colourLine addObject:[[CRColourCell alloc]init]];
             }
             
             [_colours addObject:colourLine];
@@ -38,12 +36,11 @@
     return self;
 }
 
--(int) colourAtLocationX:(int)x andY:(int)y
+-(CRColourCell*) colourAtLocationX:(int)x andY:(int)y
 {
     NSArray* colourLine=[_colours objectAtIndex:x];
     
-    NSNumber* n=[colourLine objectAtIndex:y];
-    return [n intValue];
+    return [colourLine objectAtIndex:y];
 }
 
 @end
