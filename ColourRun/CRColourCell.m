@@ -27,41 +27,7 @@
 
 -(void)initColour
 {
-    int rand = arc4random() % 4;
-    
-    switch (rand) {
-        case 0:
-            _colour.r=1.0;
-            _colour.g=0.0;
-            _colour.b= 0.0;
-            _colour.alpha= 0.5;
-            break;
-        case 1:
-            _colour.r=0.0;
-            _colour.g=1.0;
-            _colour.b= 0.0;
-            _colour.alpha= 0.5;
-            break;
-        case 2:
-            _colour.r=0.0;
-            _colour.g=0.0;
-            _colour.b= 1.0;
-            _colour.alpha= 0.5;
-            break;
-        case 3:
-            _colour.r=1.0;
-            _colour.g=1.0;
-            _colour.b= 0.0;
-            _colour.alpha= 0.5;
-            break;
-            
-        default:
-            _colour.r=0.0;
-            _colour.g=0.0;
-            _colour.b= 0.0;
-            _colour.alpha= 0.5;
-            break;
-    }
+     _colour = arc4random() % 4;
 }
 
 

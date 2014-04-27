@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+/*
 struct Colour
 {
     CGFloat r;
@@ -15,13 +16,21 @@ struct Colour
     CGFloat b;
     CGFloat alpha;
 };
+ */
+
 
 @interface CRColourCell : NSObject
 {
-    struct Colour _colour;
+        //struct Colour _colour;
+    int colour;
 }
 
-@property (readonly) struct Colour colour;
+    //@property (readonly) struct Colour colour;
+@property int colour;
+
+
+
+    //@property (readonly) BOOL inSelection;
 
 
 

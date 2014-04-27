@@ -43,4 +43,8 @@
     return [colourLine objectAtIndex:y];
 }
 
+-(void)compareColours
+{
+}
+
 @end
