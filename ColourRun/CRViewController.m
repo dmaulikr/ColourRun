@@ -26,4 +26,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)buttonPressed:(id)sender
+{
+    NSNumber* colour=[sender valueForKeyPath:@"colour"];
+    
+    [_gameView setColour:colour.intValue];
+}
+
+
+
+
 @end

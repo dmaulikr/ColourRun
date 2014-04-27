@@ -25,6 +25,7 @@
 		2819688C190C5A72003EBD2F /* CRColourGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 2819688B190C5A72003EBD2F /* CRColourGrid.m */; };
 		2819688F190C5EAD003EBD2F /* CRGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2819688E190C5EAD003EBD2F /* CRGameView.m */; };
 		28196895190CF962003EBD2F /* CRColourCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28196894190CF962003EBD2F /* CRColourCell.m */; };
+		28A0A7FF190D9A12007AD860 /* CRColourButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A0A7FE190D9A12007AD860 /* CRColourButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		2819688E190C5EAD003EBD2F /* CRGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRGameView.m; sourceTree = "<group>"; };
 		28196893190CF962003EBD2F /* CRColourCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRColourCell.h; sourceTree = "<group>"; };
 		28196894190CF962003EBD2F /* CRColourCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRColourCell.m; sourceTree = "<group>"; };
+		28A0A7FD190D9A12007AD860 /* CRColourButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRColourButton.h; sourceTree = "<group>"; };
+		28A0A7FE190D9A12007AD860 /* CRColourButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRColourButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +184,8 @@
 			children = (
 				2819688D190C5EAD003EBD2F /* CRGameView.h */,
 				2819688E190C5EAD003EBD2F /* CRGameView.m */,
+				28A0A7FD190D9A12007AD860 /* CRColourButton.h */,
+				28A0A7FE190D9A12007AD860 /* CRColourButton.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -298,6 +303,7 @@
 				28196895190CF962003EBD2F /* CRColourCell.m in Sources */,
 				2819685F190C57EF003EBD2F /* main.m in Sources */,
 				28196863190C57EF003EBD2F /* CRAppDelegate.m in Sources */,
+				28A0A7FF190D9A12007AD860 /* CRColourButton.m in Sources */,
 				2819686C190C57EF003EBD2F /* CRViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,6 +519,7 @@
 				28196886190C57EF003EBD2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28196887190C57EF003EBD2F /* Build configuration list for PBXNativeTarget "ColourRunTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +528,7 @@
 				28196889190C57EF003EBD2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

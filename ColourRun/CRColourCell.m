@@ -11,6 +11,7 @@
 @implementation CRColourCell
 
 @synthesize colour=_colour;
+@synthesize inSelection=_inSelection;
 
 -(id)init
 {

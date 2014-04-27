@@ -16,4 +16,6 @@
     CRColourGrid* _colourGrid;
 }
 
+-(void)setColour:(int)newColour;
+
 @end

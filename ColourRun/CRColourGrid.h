@@ -12,12 +12,16 @@
 @interface CRColourGrid : NSObject
 {
     NSMutableArray* _colours;
+    NSMutableArray* _groups;
+    
     int _width;
     int _height;
 }
 
 -(id)initWithWidth:(int)width andHeight:(int)height;
 -(CRColourCell*) colourAtLocationX:(int)x andY:(int)y;
+-(void)scanGroups;
+
 
 
 

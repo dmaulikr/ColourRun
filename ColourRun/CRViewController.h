@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CRGameView.h"
 
 @interface CRViewController : UIViewController
+{
+    IBOutlet CRGameView* _gameView;
+}
+
+-(IBAction)buttonPressed:(id)sender;
 
 @end
