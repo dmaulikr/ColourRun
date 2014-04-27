@@ -20,7 +20,7 @@
 
 -(id)initWithWidth:(int)width andHeight:(int)height;
 -(CRColourCell*) colourAtLocationX:(int)x andY:(int)y;
--(void)scanGroups;
+-(void)setColour:(int)newColour;
 
 
 

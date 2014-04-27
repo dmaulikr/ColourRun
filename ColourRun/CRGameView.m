@@ -55,10 +55,10 @@ int MAX_WIDTH=10;
                     CGContextSetRGBFillColor(context,0.0,1.0,0.0,1.0);
                     break;
                 case 2:
-                    CGContextSetRGBFillColor(context,1.0,1.0,0.0,1.0);
+                    CGContextSetRGBFillColor(context,0.0,0.0,1.0,1.0);
                     break;
                 case 3:
-                    CGContextSetRGBFillColor(context,0.0,0.0,1.0,1.0);
+                    CGContextSetRGBFillColor(context,1.0,1.0,0.0,1.0);
                     break;
                     
                 default:
@@ -104,17 +104,9 @@ int MAX_WIDTH=10;
 
 -(void)setColour:(int)newColour
 {
-    CRColourCell* selectedCell=[_colourGrid colourAtLocationX:0 andY:0];
-    
-    for (CRColourCell *cell in selectedCell.group)
-    {
-        cell.colour=newColour;
-    }
-    
-    [_colourGrid scanGroups];
-    
+    [_colourGrid setColour:newColour];
+
     [self setNeedsDisplay];
-    
 }
 
 @end

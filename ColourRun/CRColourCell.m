@@ -12,14 +12,18 @@
 
 @synthesize colour=_colour;
 @synthesize inSelection=_inSelection;
+@synthesize x=_x;
+@synthesize y=_y;
 
--(id)init
+-(id)initWithX:(int)x andY:(int)y;
 {
     self=[super init];
     
     if (self)
     {
         [self initColour];
+        _x=x;
+        _y=y;
     }
     
     return self;

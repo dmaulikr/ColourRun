@@ -32,7 +32,7 @@
             
             for (int y=0;y<height;++y)
             {
-                CRColourCell* newCell=[[CRColourCell alloc]init];
+                CRColourCell* newCell=[[CRColourCell alloc]initWithX:x andY:y];
                 
                 if (newCell.colour!=prevColour)
                 {
@@ -69,6 +69,34 @@
 }
 
 
+-(void)checkNewCell:(CRColourCell*)newCell againstCurrentCell:(CRColourCell*)currentCell
+{
+    NSLog(@"Tested colour %d,%d for (%d,%d) and (%d,%d)",currentCell.colour,newCell.colour, currentCell.x,currentCell.y,newCell.x,newCell.y);
+    if (newCell.colour==currentCell.colour)
+    {
+            //merge cells
+        
+        NSMutableArray* currentGroup=currentCell.group;
+        NSMutableArray* newGroup=newCell.group;
+        
+        NSLog(@"Found matching colour");
+        
+        
+        if (currentGroup!=newGroup)
+        {
+            NSLog(@"Found different groups");
+            for ( CRColourCell* tempCell in newGroup)
+            {
+                [currentGroup addObject:tempCell];
+                tempCell.group=currentGroup;
+            }
+            [_groups removeObject:newGroup];
+        }
+    }
+}
+
+
+
 
 -(void)createGroups
 {
@@ -79,30 +107,50 @@
             CRColourCell* currentCell=[self colourAtLocationX:x andY:y];
             CRColourCell* cellBelow=[self colourAtLocationX:x+1 andY:y];
             
-            if (cellBelow.colour==currentCell.colour)
-            {
-                    //merge cells
-                
-                NSMutableArray* currentGroup=currentCell.group;
-                NSMutableArray* groupBelow=cellBelow.group;
-                
-                
-                if (currentGroup!=groupBelow)
-                {
-                    for ( CRColourCell* newCell in groupBelow)
-                    {
-                        [currentGroup addObject:newCell];
-                        newCell.group=currentGroup;
-                    }
-                    [_groups removeObject:groupBelow];
-                }
-            }
+            [self checkNewCell:cellBelow againstCurrentCell:currentCell];
         }
     }
 }
 
--(void)scanGroups
+-(void)checkSurroundingCell:(CRColourCell*)currentCell xOffset:(int)newX yOffset:(int)newY
 {
+    if (newX>=_width ||newX<0) {
+        return;
+    }
+    
+    if (newY>=_height ||newY<0) {
+        return;
+    }
+    
+    CRColourCell* compareCell=[self colourAtLocationX:newX andY:newY];
+
+    [self checkNewCell:compareCell againstCurrentCell:currentCell];
+}
+
+
+
+-(void)checkSurroundingCells:(CRColourCell*)currentCell
+{
+    [self checkSurroundingCell:currentCell xOffset:currentCell.x+1 yOffset:currentCell.y];
+    [self checkSurroundingCell:currentCell xOffset:currentCell.x-1 yOffset:currentCell.y];
+    [self checkSurroundingCell:currentCell xOffset:currentCell.x yOffset:currentCell.y+1];
+    [self checkSurroundingCell:currentCell xOffset:currentCell.x yOffset:currentCell.y-1];
+}
+
+-(void)setColour:(int)newColour
+{
+    CRColourCell* selectedCell=[self colourAtLocationX:0 andY:0];
+    NSArray* tempGroup=[[NSArray alloc]initWithArray:selectedCell.group];
+    
+    for (CRColourCell *cell in selectedCell.group)
+    {
+        cell.colour=newColour;
+    }
+    
+    for (CRColourCell *cell in tempGroup)
+    {
+        [self checkSurroundingCells:cell];
+    }
 }
 
 -(void)extendSelection

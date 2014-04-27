@@ -13,8 +13,15 @@
 {
     int _colour;
     BOOL _inSelection;
+    int _x;
+    int _y;
 }
 
+
+-(id)initWithX:(int)x andY:(int)y;
+
+@property int x;
+@property int y;
 
 @property int colour;
 @property BOOL inSelection;
