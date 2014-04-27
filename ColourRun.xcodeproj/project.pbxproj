@@ -120,18 +120,15 @@
 		28196858190C57EF003EBD2F /* ColourRun */ = {
 			isa = PBXGroup;
 			children = (
+				28196890190CF8AB003EBD2F /* Models */,
+				28196891190CF8B6003EBD2F /* Views */,
+				28196892190CF8C0003EBD2F /* Controllers */,
 				28196861190C57EF003EBD2F /* CRAppDelegate.h */,
 				28196862190C57EF003EBD2F /* CRAppDelegate.m */,
 				28196864190C57EF003EBD2F /* Main_iPhone.storyboard */,
 				28196867190C57EF003EBD2F /* Main_iPad.storyboard */,
-				2819686A190C57EF003EBD2F /* CRViewController.h */,
-				2819686B190C57EF003EBD2F /* CRViewController.m */,
 				2819686D190C57EF003EBD2F /* Images.xcassets */,
 				28196859190C57EF003EBD2F /* Supporting Files */,
-				2819688A190C5A72003EBD2F /* CRColourGrid.h */,
-				2819688B190C5A72003EBD2F /* CRColourGrid.m */,
-				2819688D190C5EAD003EBD2F /* CRGameView.h */,
-				2819688E190C5EAD003EBD2F /* CRGameView.m */,
 			);
 			path = ColourRun;
 			sourceTree = "<group>";
@@ -163,6 +160,33 @@
 				2819687D190C57EF003EBD2F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		28196890190CF8AB003EBD2F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2819688A190C5A72003EBD2F /* CRColourGrid.h */,
+				2819688B190C5A72003EBD2F /* CRColourGrid.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		28196891190CF8B6003EBD2F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2819688D190C5EAD003EBD2F /* CRGameView.h */,
+				2819688E190C5EAD003EBD2F /* CRGameView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		28196892190CF8C0003EBD2F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2819686A190C57EF003EBD2F /* CRViewController.h */,
+				2819686B190C57EF003EBD2F /* CRViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
