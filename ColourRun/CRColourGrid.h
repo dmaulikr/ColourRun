@@ -16,11 +16,13 @@
     
     int _width;
     int _height;
+    int _count;
 }
 
 -(id)initWithWidth:(int)width andHeight:(int)height;
 -(CRColourCell*) colourAtLocationX:(int)x andY:(int)y;
 -(void)setColour:(int)newColour;
+@property int count;
 
 
 

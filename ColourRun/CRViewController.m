@@ -31,6 +31,7 @@
     NSNumber* colour=[sender valueForKeyPath:@"colour"];
     
     [_gameView setColour:colour.intValue];
+    [_countLabel setText:[NSString stringWithFormat:@"Count %d",_gameView.count ]];
 }
 
 -(IBAction)restartButtonPressed:(id)sender

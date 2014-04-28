@@ -9,6 +9,7 @@
 #import "CRColourGrid.h"
 
 @implementation CRColourGrid
+@synthesize count=_count;
 
 -(id)initWithWidth:(int)width andHeight:(int)height
 {
@@ -17,6 +18,7 @@
     if (self) {
         _width=width;
         _height=height;
+        _count=0;
         
         _colours=[[NSMutableArray alloc]init];
         _groups=[[NSMutableArray alloc]init];
@@ -146,6 +148,7 @@
     {
         [self checkSurroundingCells:cell];
     }
+    ++_count;
 }
 
 -(void)extendSelection

@@ -10,7 +10,7 @@
 
 @implementation CRGameView
 
-int MAX_HEIGHT=12;
+int MAX_HEIGHT=10;
 int MAX_WIDTH=10;
 
 - (id)initWithFrame:(CGRect)frame
@@ -107,6 +107,11 @@ int MAX_WIDTH=10;
     [_colourGrid setColour:newColour];
 
     [self setNeedsDisplay];
+}
+
+-(int)count
+{
+    return _colourGrid.count;
 }
 
 -(void)restart

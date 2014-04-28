@@ -12,6 +12,7 @@
 @interface CRViewController : UIViewController
 {
     IBOutlet CRGameView* _gameView;
+    IBOutlet UILabel* _countLabel;
 }
 
 -(IBAction)buttonPressed:(id)sender;

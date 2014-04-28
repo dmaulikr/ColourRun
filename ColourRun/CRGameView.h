@@ -20,5 +20,6 @@
 
 -(void)setColour:(int)newColour;
 -(void)restart;
+@property (readonly) int count;
 
 @end
