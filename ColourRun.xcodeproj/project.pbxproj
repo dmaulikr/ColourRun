@@ -26,6 +26,13 @@
 		2819688F190C5EAD003EBD2F /* CRGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2819688E190C5EAD003EBD2F /* CRGameView.m */; };
 		28196895190CF962003EBD2F /* CRColourCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28196894190CF962003EBD2F /* CRColourCell.m */; };
 		28A0A7FF190D9A12007AD860 /* CRColourButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A0A7FE190D9A12007AD860 /* CRColourButton.m */; };
+		28A0A8451912E386007AD860 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 28A0A8441912E386007AD860 /* circle.png */; };
+		28A0A8481912E574007AD860 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A0A8471912E574007AD860 /* UIImage+Color.m */; };
+		28A0A84D1916CB6F007AD860 /* 1-1-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 28A0A8491916CB6F007AD860 /* 1-1-b.png */; };
+		28A0A84E1916CB6F007AD860 /* 2-1-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 28A0A84A1916CB6F007AD860 /* 2-1-b.png */; };
+		28A0A84F1916CB6F007AD860 /* 4-1-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 28A0A84B1916CB6F007AD860 /* 4-1-b.png */; };
+		28A0A8501916CB6F007AD860 /* 0-1-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 28A0A84C1916CB6F007AD860 /* 0-1-b.png */; };
+		28A0A8521916DDED007AD860 /* 3-1-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 28A0A8511916DDED007AD860 /* 3-1-b.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +74,14 @@
 		28196894190CF962003EBD2F /* CRColourCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRColourCell.m; sourceTree = "<group>"; };
 		28A0A7FD190D9A12007AD860 /* CRColourButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRColourButton.h; sourceTree = "<group>"; };
 		28A0A7FE190D9A12007AD860 /* CRColourButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRColourButton.m; sourceTree = "<group>"; };
+		28A0A8441912E386007AD860 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
+		28A0A8461912E574007AD860 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		28A0A8471912E574007AD860 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		28A0A8491916CB6F007AD860 /* 1-1-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-1-b.png"; sourceTree = "<group>"; };
+		28A0A84A1916CB6F007AD860 /* 2-1-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-1-b.png"; sourceTree = "<group>"; };
+		28A0A84B1916CB6F007AD860 /* 4-1-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4-1-b.png"; sourceTree = "<group>"; };
+		28A0A84C1916CB6F007AD860 /* 0-1-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "0-1-b.png"; sourceTree = "<group>"; };
+		28A0A8511916DDED007AD860 /* 3-1-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3-1-b.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +157,12 @@
 		28196859190C57EF003EBD2F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				28A0A84C1916CB6F007AD860 /* 0-1-b.png */,
+				28A0A8491916CB6F007AD860 /* 1-1-b.png */,
+				28A0A84A1916CB6F007AD860 /* 2-1-b.png */,
+				28A0A8511916DDED007AD860 /* 3-1-b.png */,
+				28A0A84B1916CB6F007AD860 /* 4-1-b.png */,
+				28A0A8441912E386007AD860 /* circle.png */,
 				2819685A190C57EF003EBD2F /* ColourRun-Info.plist */,
 				2819685B190C57EF003EBD2F /* InfoPlist.strings */,
 				2819685E190C57EF003EBD2F /* main.m */,
@@ -184,6 +205,8 @@
 			children = (
 				2819688D190C5EAD003EBD2F /* CRGameView.h */,
 				2819688E190C5EAD003EBD2F /* CRGameView.m */,
+				28A0A8461912E574007AD860 /* UIImage+Color.h */,
+				28A0A8471912E574007AD860 /* UIImage+Color.m */,
 				28A0A7FD190D9A12007AD860 /* CRColourButton.h */,
 				28A0A7FE190D9A12007AD860 /* CRColourButton.m */,
 			);
@@ -278,7 +301,13 @@
 			files = (
 				28196869190C57EF003EBD2F /* Main_iPad.storyboard in Resources */,
 				2819686E190C57EF003EBD2F /* Images.xcassets in Resources */,
+				28A0A8451912E386007AD860 /* circle.png in Resources */,
 				28196866190C57EF003EBD2F /* Main_iPhone.storyboard in Resources */,
+				28A0A8521916DDED007AD860 /* 3-1-b.png in Resources */,
+				28A0A84D1916CB6F007AD860 /* 1-1-b.png in Resources */,
+				28A0A84F1916CB6F007AD860 /* 4-1-b.png in Resources */,
+				28A0A84E1916CB6F007AD860 /* 2-1-b.png in Resources */,
+				28A0A8501916CB6F007AD860 /* 0-1-b.png in Resources */,
 				2819685D190C57EF003EBD2F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +332,7 @@
 				28196895190CF962003EBD2F /* CRColourCell.m in Sources */,
 				2819685F190C57EF003EBD2F /* main.m in Sources */,
 				28196863190C57EF003EBD2F /* CRAppDelegate.m in Sources */,
+				28A0A8481912E574007AD860 /* UIImage+Color.m in Sources */,
 				28A0A7FF190D9A12007AD860 /* CRColourButton.m in Sources */,
 				2819686C190C57EF003EBD2F /* CRViewController.m in Sources */,
 			);

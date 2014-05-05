@@ -29,6 +29,12 @@
                 _cells[x][y]=newCell;
             }
         }
+        
+        _cells[0][0].inSelection=YES;
+        [self checkSurroundingCellsFromX:0 andY:0 fromColour:-1 toColour:_cells[0][0].colour fill:NO];
+        
+        
+            //[self setColour:_cells[0][0].colour];
     }
     
     return self;
@@ -40,7 +46,7 @@
 }
 
 
--(void)checkSurroundingCellAtX:(int)x andY:(int)y fromColour:(int)oldColour  toColour:(int)newColour
+-(void)checkSurroundingCellAtX:(int)x andY:(int)y fromColour:(int)oldColour  toColour:(int)newColour fill:(BOOL)fill
 {
     if (x>=_width ||x<0) {
         return;
@@ -52,20 +58,39 @@
     
     CRColourCell* compareCell=_cells[x][y];
     
-    if (compareCell.colour==oldColour)
+    if (fill && compareCell.colour==oldColour)
     {
         compareCell.colour=newColour;
-        [self checkSurroundingCellsFromX:x andY:y fromColour:oldColour toColour:newColour];
+        compareCell.inSelection=YES;
+        [self checkSurroundingCellsFromX:x andY:y fromColour:oldColour toColour:newColour fill:YES];
+    }
+    if(compareCell.colour==newColour && !compareCell.inSelection)
+    {
+        NSLog(@"Checking (%d,%d",x,y);
+        compareCell.inSelection=YES;
+        [self checkSurroundingCellsFromX:x andY:y fromColour:oldColour toColour:newColour fill:NO];
     }
 }
 
 
--(void)checkSurroundingCellsFromX:(int)x andY:(int)y fromColour:(int)oldColour  toColour:(int)newColour
+-(BOOL)locationMatchesColour:(int)colour atX:(int)x andY:(int)y
 {
-    [self checkSurroundingCellAtX:x+1 andY:y fromColour:oldColour toColour:newColour];
-    [self checkSurroundingCellAtX:x-1 andY:y fromColour:oldColour toColour:newColour];
-    [self checkSurroundingCellAtX:x andY:y+1 fromColour:oldColour toColour:newColour];
-    [self checkSurroundingCellAtX:x andY:y-1 fromColour:oldColour toColour:newColour];
+    if (x<0 || y<0 || x>=_width || y>=_height)
+    {
+        return NO;
+    }
+    
+    return (_cells[x][y].colour==colour);
+}
+
+
+
+-(void)checkSurroundingCellsFromX:(int)x andY:(int)y fromColour:(int)oldColour  toColour:(int)newColour fill:(BOOL)fill
+{
+    [self checkSurroundingCellAtX:x+1 andY:y fromColour:oldColour toColour:newColour fill:fill];
+    [self checkSurroundingCellAtX:x-1 andY:y fromColour:oldColour toColour:newColour fill:fill];
+    [self checkSurroundingCellAtX:x andY:y+1 fromColour:oldColour toColour:newColour fill:fill];
+    [self checkSurroundingCellAtX:x andY:y-1 fromColour:oldColour toColour:newColour fill:fill];
 }
 
 
@@ -76,9 +101,14 @@
     
     int oldColour=firstCell.colour;
     
+    if(oldColour==newColour)
+    {
+        return;
+    }
+    
     firstCell.colour=newColour;
     
-    [self checkSurroundingCellsFromX:0 andY:0 fromColour:oldColour toColour:newColour];
+    [self checkSurroundingCellsFromX:0 andY:0 fromColour:oldColour toColour:newColour fill:YES];
 }
 
 

@@ -24,6 +24,7 @@
         [self initColour];
         _x=x;
         _y=y;
+        _inSelection=NO;
     }
     
     return self;

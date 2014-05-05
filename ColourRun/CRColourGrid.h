@@ -19,8 +19,12 @@
 
 -(id)initWithWidth:(int)width andHeight:(int)height;
 -(CRColourCell*) colourAtLocationX:(int)x andY:(int)y;
+-(BOOL)locationMatchesColour:(int)colour atX:(int)x andY:(int)y;
+
 -(void)setColour:(int)newColour;
 @property int count;
+
+
 
 
 
