@@ -65,14 +65,53 @@ XY XYMake(int x, int y)
         
             //_cicleImg=[UIImage replaceColor:green inImage:greenCircle withTolerance:1.0f newColor:red];
         
-        _images[0][0][0]=[UIImage imageNamed:@"1-1-b.png"];
-        _images[1][0][0]=[UIImage imageNamed:@"2-1-b.png"];
-        _images[2][0][0]=[UIImage imageNamed:@"3-1-b.png"];
-        _images[3][0][0]=[UIImage imageNamed:@"4-1-b.png"];
-        _images[4][0][0]=[UIImage imageNamed:@"1-1-b.png"];
-        _images[5][0][0]=[UIImage imageNamed:@"2-1-b.png"];
-        _images[6][0][0]=[UIImage imageNamed:@"3-1-b.png"];
-        _images[7][0][0]=[UIImage imageNamed:@"0-1-b.png"];
+        _images[0][0][0]=[UIImage imageNamed:@"v3-1-1.png"];
+        _images[1][0][0]=[UIImage imageNamed:@"v3-2-1.png"];
+        _images[2][0][0]=[UIImage imageNamed:@"v3-3-1.png"];
+        _images[3][0][0]=[UIImage imageNamed:@"v3-4-1.png"];
+        _images[4][0][0]=[UIImage imageNamed:@"v3-1-1.png"];
+        _images[5][0][0]=[UIImage imageNamed:@"v3-2-1.png"];
+        _images[6][0][0]=[UIImage imageNamed:@"v3-3-1.png"];
+        _images[7][0][0]=[UIImage imageNamed:@"v3-0-1.png"];
+        
+        _algaeImg[BLUE]=[UIImage imageNamed:@"algae-b.png"];
+        
+        _algaeImg[RED] =[UIImage swapColor:_algaeImg[BLUE] withFunction:
+                             ^(unsigned char *r,unsigned char *g, unsigned char *b)
+                             {
+                                 unsigned char tempR=*r;
+                                 unsigned char tempG=*g;
+                                 unsigned char tempB=*b;
+                                 
+                                 *r=tempB;
+                                 *g=tempG;
+                                 *b=tempR;
+                                 
+                             }];
+        _algaeImg[GREEN] =[UIImage swapColor:_algaeImg[BLUE] withFunction:
+                               ^(unsigned char *r,unsigned char *g, unsigned char *b)
+                               {
+                                   unsigned char tempR=*r;
+                                   unsigned char tempG=*g;
+                                   unsigned char tempB=*b;
+                                   
+                                   *r=tempR;
+                                   *g=tempB;
+                                   *b=tempG;
+                                   
+                               }];
+        _algaeImg[YELLOW] =[UIImage swapColor:_algaeImg[BLUE] withFunction:
+                                ^(unsigned char *r,unsigned char *g, unsigned char *b)
+                                {
+                                        //                                     unsigned char tempR=*r;
+                                        //unsigned char tempG=*g;
+                                    unsigned char tempB=*b;
+                                    
+                                    *r=tempB;
+                                    *g=tempB;
+                                    *b=0;
+                                    
+                                }];
         
         
         
@@ -301,7 +340,9 @@ UIImage *rotate(UIImage *image,int rotation) {
             }
             else
             {
-            
+                [_algaeImg[colourCell.colour] drawInRect:rectangle];
+                
+            /*
                 switch (colourCell.colour) {
                     case BLUE:
                         CGContextSetRGBFillColor(context,0.0,0.0,1.0,alpha);
@@ -320,7 +361,7 @@ UIImage *rotate(UIImage *image,int rotation) {
                         CGContextSetRGBFillColor(context,0.0,0.0,0.0,alpha);
                         break;
                 }
-                
+             
                 
                 
                 
@@ -344,6 +385,8 @@ UIImage *rotate(UIImage *image,int rotation) {
                 
                 CGContextAddPath(context, roundedRectPath);
                 CGContextFillPath(context);
+             */
+             
             }
         }
     }

@@ -17,7 +17,8 @@
     int _cellHeight;
     int _cellWidth;
     UIImage* _cicleImg;
-    UIImage*  _images[8][4][6];
+    UIImage* _images[8][4][6];
+    UIImage* _algaeImg[4];
 }
 
 -(void)setColour:(int)newColour;
