@@ -15,6 +15,7 @@
     int _height;
     int _count;
     CRColourCell* _cells[64][64];
+    CRColourCell* _undoCells[64][64];
 }
 
 -(id)initWithWidth:(int)width andHeight:(int)height;

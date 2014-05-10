@@ -7,17 +7,13 @@
 //
 
 #import "CRGameView.h"
+#import "CRLozengeImage.h"
 #import "UIImage+Color.h"
 
 @implementation CRGameView
 
 int MAX_HEIGHT=10;
 int MAX_WIDTH=10;
-
-int const BLUE=0;
-int const RED=1;
-int const GREEN=2;
-int const YELLOW=3;
 
 
 
@@ -52,27 +48,67 @@ XY XYMake(int x, int y)
     
     if (self)
     {
+        CRLozengeImage* rawImages[13];
+        
+        int imgNums[13][2]=
+        {
+            {1,4},
+            {1,6},
+            {2,4},
+            {2,6},
+            {4,2},
+            {4,4},
+            {4,6},
+            {5,1},
+            {5,2},
+            {5,4},
+            {5,6},
+            {5,9},
+            {6,5}
+        };
+        
+        for (int i=0; i<13; ++i)
+        {
+            rawImages[i]=[[CRLozengeImage alloc]initWithRow:imgNums[i][0] andColumn:imgNums[i][1]];
+                // rawImages[i]=[[CRLozengeImage alloc]initWithImageNum:i];
+        }
+        
+            //Top Left
+        _images[0][0]=rawImages[0];
+        _images[0][1]=rawImages[4];
+        _images[0][2]=rawImages[2];
+        _images[0][3]=rawImages[5];
+
+            //Top Right
+        _images[1][0]=rawImages[1];
+        _images[1][1]=rawImages[4];
+        _images[1][2]=rawImages[3];
+        _images[1][3]=rawImages[6];
+
+            //Bottom Left
+        _images[2][0]=rawImages[7];
+        _images[2][1]=rawImages[2];
+        _images[2][2]=rawImages[8];
+        _images[2][3]=rawImages[9];
+
+            //Bottom right
+        _images[3][0]=rawImages[11];
+        _images[3][1]=rawImages[3];
+        _images[3][2]=rawImages[8];
+        _images[3][3]=rawImages[10];
+        
+        for (int i=0; i<4; ++i)
+        {
+            _images[i][4]=_images[i][0];
+            _images[i][5]=_images[i][1];
+            _images[i][6]=_images[i][2];
+            _images[i][7]=rawImages[12];
+        }
+
+        
         _cellHeight=self.frame.size.height/MAX_HEIGHT;
         _cellWidth=self.frame.size.width/MAX_WIDTH;
-            //UIImage* greenCircle=[UIImage imageNamed:@"circle.png"];
         
-            //#0055D4
-            //UIColor* red=[UIColor colorWithRed:1 green:0 blue:0 alpha:1.0];
-            //UIColor* green=[UIColor colorWithRed:0 green:1 blue:0 alpha:1.0];
-            //UIColor* blue=[UIColor colorWithRed:0 green:0 blue:1 alpha:1.0];
-            //UIColor* blue=[UIColor colorWithRed:0 green:0x55/256 blue:0xD4/256 alpha:1.0];
-            //UIColor* yellow=[UIColor colorWithRed:1 green:1 blue:0 alpha:1.0];
-        
-            //_cicleImg=[UIImage replaceColor:green inImage:greenCircle withTolerance:1.0f newColor:red];
-        
-        _images[0][0][0]=[UIImage imageNamed:@"v3-1-1.png"];
-        _images[1][0][0]=[UIImage imageNamed:@"v3-2-1.png"];
-        _images[2][0][0]=[UIImage imageNamed:@"v3-3-1.png"];
-        _images[3][0][0]=[UIImage imageNamed:@"v3-4-1.png"];
-        _images[4][0][0]=[UIImage imageNamed:@"v3-1-1.png"];
-        _images[5][0][0]=[UIImage imageNamed:@"v3-2-1.png"];
-        _images[6][0][0]=[UIImage imageNamed:@"v3-3-1.png"];
-        _images[7][0][0]=[UIImage imageNamed:@"v3-0-1.png"];
         
         _algaeImg[BLUE]=[UIImage imageNamed:@"algae-b.png"];
         
@@ -113,61 +149,7 @@ XY XYMake(int x, int y)
                                     
                                 }];
         
-        
-        
-        for (int i=0; i<8; ++i)
-        {
-            _images[i][0][RED] =[UIImage swapColor:_images[i][0][BLUE] withFunction:
-                                 ^(unsigned char *r,unsigned char *g, unsigned char *b)
-                                 {
-                                     unsigned char tempR=*r;
-                                     unsigned char tempG=*g;
-                                     unsigned char tempB=*b;
-                                     
-                                     *r=tempB;
-                                     *g=tempG;
-                                     *b=tempR;
-                                     
-                                 }];
-            _images[i][0][GREEN] =[UIImage swapColor:_images[i][0][BLUE] withFunction:
-                                 ^(unsigned char *r,unsigned char *g, unsigned char *b)
-                                 {
-                                     unsigned char tempR=*r;
-                                     unsigned char tempG=*g;
-                                     unsigned char tempB=*b;
-                                     
-                                     *r=tempR;
-                                     *g=tempB;
-                                     *b=tempG;
-                                     
-                                 }];
-            _images[i][0][YELLOW] =[UIImage swapColor:_images[i][0][BLUE] withFunction:
-                                 ^(unsigned char *r,unsigned char *g, unsigned char *b)
-                                 {
-                                         //                                     unsigned char tempR=*r;
-                                         //unsigned char tempG=*g;
-                                     unsigned char tempB=*b;
-                                     
-                                     *r=tempB;
-                                     *g=tempB;
-                                     *b=0;
-                                     
-                                 }];
-            
-                                 
-                                 
-                                 /*
-                                  
-                                  ^(double time) {
-                                  return time + 5.0;
-                                  } steps:100];                                  */
-                                 
-                                 
-                                 //swapBlueColorForRed:_images[i][0][BLUE]];
-            
-                //[UIImage replaceColor:blue inImage:_images[0][0][0] withTolerance:1.0f newColor:red];
-        }
-        
+
         [self restart];
     }
     
@@ -184,7 +166,9 @@ XY XYMake(int x, int y)
 {
 	CGMutablePathRef retPath = CGPathCreateMutable();
     
-	CGRect innerRect = CGRectInset(rect, radius, radius);
+        //	CGRect innerRect = CGRectInset(rect, radius, radius);
+    
+    	CGRect innerRect = CGRectInset(rect, 2, 2);
     
 	CGFloat inside_right = innerRect.origin.x + innerRect.size.width;
 	CGFloat outside_right = rect.origin.x + rect.size.width;
@@ -246,53 +230,19 @@ XY XYMake(int x, int y)
 }
 
 
-#define radians(degrees) (degrees * M_PI/180)
-
-UIImage *rotate(UIImage *image,int rotation) {
-    CGSize size = image.size;;
-    
-    UIGraphicsBeginImageContext(size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-        // If this is commented out, image is returned as it is.
-    CGContextTranslateCTM( context, 0.5f * size.width, 0.5f * size.height ) ;
-    CGContextRotateCTM( context, radians( rotation ) ) ;
-    
-    [ image drawInRect:(CGRect){ { -size.width * 0.5f, -size.height * 0.5f }, size } ] ;
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
--(UIImage*)checkSquaresForColour:(int)colour p1:(XY)p1 p2:(XY)p2 p3:(XY)p3 rotation:(int)rotatation
+-(UIImage*)checkSquaresForColour:(int)colour p1:(XY)p1 p2:(XY)p2 p3:(XY)p3 forCorner:(int)corner
 {
-    BOOL above=[_colourGrid locationMatchesColour:colour atX:p1.x andY:p1.y];
-    BOOL left=[_colourGrid locationMatchesColour:colour atX:p2.x andY:p2.y];
-    BOOL aboveLeft=[_colourGrid locationMatchesColour:colour atX:p3.x andY:p3.y];
+    BOOL s1=[_colourGrid locationMatchesColour:colour atX:p1.x andY:p1.y];
+    BOOL s2=[_colourGrid locationMatchesColour:colour atX:p2.x andY:p2.y];
+    BOOL s3=[_colourGrid locationMatchesColour:colour atX:p3.x andY:p3.y];
     
-    int imgidx=(aboveLeft*4)+(above*2)+left;
-    UIImage* img=_images[imgidx][0][colour];
+    int imgidx=s1+(s2*2)+(s3*4);
+    CRLozengeImage* lozengeImg=_images[corner][imgidx];
     
-    return rotate(img,rotatation);
+    return [lozengeImg imageWithColour:colour];
 }
 
 
-
--(UIImage*)checkSquaresForColour:(int)colour startX:(int)startX startY:(int)startY endX:(int)endX endY:(int)endY //rotateBy:(float)imageRotationFix
-{
-    BOOL above=[_colourGrid locationMatchesColour:colour atX:startX andY:endY];
-    BOOL left=[_colourGrid locationMatchesColour:colour atX:endX andY:startY];
-    BOOL aboveLeft=[_colourGrid locationMatchesColour:colour atX:endX andY:endY];
-    
-    int imgidx=(aboveLeft*4)+(above*2)+left;
-    UIImage* img=_images[imgidx][0][colour];
-    
-    
-        //    img.center = CGPointMake(0, 0);
-        //img.transform = CGAffineTransformMakeRotation([degreesToRadians:imageRotationFix]);
-    
-    return img;
-}
 
 
 - (void)drawRect:(CGRect)rect
@@ -309,7 +259,7 @@ UIImage *rotate(UIImage *image,int rotation) {
             
             
             
-            float alpha=0.4;
+            float alpha=1.0;
             
             if (colourCell.inSelection)
             {
@@ -332,28 +282,28 @@ UIImage *rotate(UIImage *image,int rotation) {
                  
                  */
                 
-                [[self checkSquaresForColour:colourCell.colour p1:XYMake(x,y-1) p2:XYMake(x-1, y) p3:XYMake(x-1,y-1) rotation:0] drawInRect:topLeft];
-                [[self checkSquaresForColour:colourCell.colour p1:XYMake(x-1,y) p2:XYMake(x, y+1) p3:XYMake(x-1,y+1) rotation:-90] drawInRect:bottomLeft];
-                [[self checkSquaresForColour:colourCell.colour p1:XYMake(x+1,y) p2:XYMake(x, y-1) p3:XYMake(x+1,y-1) rotation:90] drawInRect:topRight];
-                [[self checkSquaresForColour:colourCell.colour p1:XYMake(x,y+1) p2:XYMake(x+1, y) p3:XYMake(x+1,y+1) rotation:180] drawInRect:bottomRight];
+                [[self checkSquaresForColour:colourCell.colour p1:XYMake(x-1,y) p2:XYMake(x, y-1) p3:XYMake(x-1,y-1) forCorner:0] drawInRect:topLeft];
+                [[self checkSquaresForColour:colourCell.colour p1:XYMake(x+1,y) p2:XYMake(x, y-1) p3:XYMake(x+1,y-1) forCorner:1] drawInRect:topRight];
+                [[self checkSquaresForColour:colourCell.colour p1:XYMake(x,y+1) p2:XYMake(x-1, y) p3:XYMake(x-1,y+1) forCorner:2] drawInRect:bottomLeft];
+                [[self checkSquaresForColour:colourCell.colour p1:XYMake(x,y+1) p2:XYMake(x+1, y) p3:XYMake(x+1,y+1) forCorner:3] drawInRect:bottomRight];
                     //[[self checkSquaresForColour:colourCell.colour CGPointMake(x,y-1) CGPointMake(x-1, y) CGPointMake(x-1, y-1)] drawInRect:bottomLeft];
             }
             else
             {
-                [_algaeImg[colourCell.colour] drawInRect:rectangle];
+                    //[_algaeImg[colourCell.colour] drawInRect:rectangle];
                 
-            /*
                 switch (colourCell.colour) {
-                    case BLUE:
-                        CGContextSetRGBFillColor(context,0.0,0.0,1.0,alpha);
+                    case 0:
+                            //CGContextSetRGBFillColor(context,0.0,0.0,1.0,alpha);//0x99FF
+                            CGContextSetRGBFillColor(context, 0.0, 153.0f/255.0f, 1.0, alpha);
                         break;
-                    case RED:
+                    case 1:
                         CGContextSetRGBFillColor(context,1.0,0.0,0.0,alpha);
                         break;
-                    case GREEN:
+                    case 2:
                         CGContextSetRGBFillColor(context,0.0,1.0,0.0,alpha);
                         break;
-                    case YELLOW:
+                    case 3:
                         CGContextSetRGBFillColor(context,1.0,1.0,0.0,alpha);
                         break;
                         
@@ -385,8 +335,6 @@ UIImage *rotate(UIImage *image,int rotation) {
                 
                 CGContextAddPath(context, roundedRectPath);
                 CGContextFillPath(context);
-             */
-             
             }
         }
     }

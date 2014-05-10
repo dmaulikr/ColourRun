@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CRColourGrid.h"
+#import "CRLozengeImage.h"
 
 
 
@@ -16,8 +17,7 @@
     CRColourGrid* _colourGrid;
     int _cellHeight;
     int _cellWidth;
-    UIImage* _cicleImg;
-    UIImage* _images[8][4][6];
+    CRLozengeImage* _images[4][8];
     UIImage* _algaeImg[4];
 }
 
@@ -25,11 +25,6 @@
 -(void)restart;
 @property (readonly) int count;
 
-
-FOUNDATION_EXPORT int const BLUE;
-FOUNDATION_EXPORT int const RED;
-FOUNDATION_EXPORT int const GREEN;
-FOUNDATION_EXPORT int const YELLOW;
 
 
 @end

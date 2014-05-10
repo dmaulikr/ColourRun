@@ -66,7 +66,6 @@
     }
     if(compareCell.colour==newColour && !compareCell.inSelection)
     {
-        NSLog(@"Checking (%d,%d",x,y);
         compareCell.inSelection=YES;
         [self checkSurroundingCellsFromX:x andY:y fromColour:oldColour toColour:newColour fill:NO];
     }
@@ -92,7 +91,6 @@
     [self checkSurroundingCellAtX:x andY:y+1 fromColour:oldColour toColour:newColour fill:fill];
     [self checkSurroundingCellAtX:x andY:y-1 fromColour:oldColour toColour:newColour fill:fill];
 }
-
 
 
 -(void)setColour:(int)newColour
