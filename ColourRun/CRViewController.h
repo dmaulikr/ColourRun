@@ -16,5 +16,6 @@
 }
 
 -(IBAction)buttonPressed:(id)sender;
+-(IBAction)undoButtonPressed:(id)sender;
 
 @end

@@ -23,6 +23,7 @@
 
 -(void)setColour:(int)newColour;
 -(void)restart;
+-(void)undo;
 @property (readonly) int count;
 
 

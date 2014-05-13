@@ -10,8 +10,8 @@
 
 @implementation CRColourCell
 
-@synthesize colour=_colour;
-@synthesize inSelection=_inSelection;
+    //@synthesize colour=_colour;
+    //@synthesize inSelection=_inSelection;
 @synthesize x=_x;
 @synthesize y=_y;
 
@@ -21,19 +21,62 @@
     
     if (self)
     {
+        _state=[[CRColourCellState alloc]init];
+        _prevStates=[[NSMutableArray alloc]init];
+        
         [self initColour];
         _x=x;
         _y=y;
-        _inSelection=NO;
+        _state.inSelection=NO;
+            //[self pushVersion];
     }
     
     return self;
 }
 
 
+-(void)pushVersion
+{
+    [_prevStates addObject:_state];
+    _state=[_state newState ];
+}
+
+-(void)popVersion
+{
+    if (_prevStates.count==0)
+    {
+        return;
+    }
+    
+    _state=[_prevStates lastObject];
+    [_prevStates removeLastObject];
+}
+
+
 -(void)initColour
 {
-     _colour = arc4random() % 4;
+     _state.colour = arc4random() % 6;
+    NSLog(@"Colour %d",_state.colour);
+}
+
+-(int)colour
+{
+    return _state.colour;
+}
+
+-(void)setColour:(int)colour
+{
+    _state.colour=colour;
+}
+
+-(BOOL)inSelection
+{
+    return _state.inSelection;
+}
+
+-(void)setInSelection:(BOOL)inSelection
+{
+    _state.inSelection=inSelection;
 }
 
 

@@ -64,19 +64,7 @@
     
     while (byteIndex < bitmapByteCount)
     {
-            //unsigned char[] rgb=
         manipulationFunc(&rawData[byteIndex],&rawData[byteIndex+1],&rawData[byteIndex+2]);
-        
-/*
-        
-        unsigned char red   = rawData[byteIndex+2];
-        unsigned char green = rawData[byteIndex + 1];
-        unsigned char blue  = rawData[byteIndex ];
-        
-        rawData[byteIndex] = red;
-        rawData[byteIndex + 1] = green;
-        rawData[byteIndex + 2] = blue;
-      */
         
         byteIndex += 4;
     }

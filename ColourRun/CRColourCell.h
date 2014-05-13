@@ -7,15 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CRColourCellState.h"
 
-
-@interface CRColourCell : NSObject
+struct CellState
 {
     int _colour;
     BOOL _inSelection;
+};
+
+typedef struct CellState CellState;
+
+@interface CRColourCell : NSObject
+{
+    CRColourCellState* _state;
+    NSMutableArray* _prevStates;
     int _x;
     int _y;
 }
+
+
 
 
 -(id)initWithX:(int)x andY:(int)y;
@@ -23,8 +33,12 @@
 @property int x;
 @property int y;
 
+
 @property int colour;
 @property BOOL inSelection;
-@property (weak) NSMutableArray* group;
+
+-(void)pushVersion;
+-(void)popVersion;
+
 
 @end

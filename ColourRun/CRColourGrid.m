@@ -93,8 +93,29 @@
 }
 
 
+-(void)undo
+{
+    for (int x=0; x<64; ++x)
+    {
+        for (int y=0; y<64; ++y)
+        {
+            [_cells[x][y] popVersion];
+        }
+    }
+}
+
+
+
 -(void)setColour:(int)newColour
 {
+     for (int x=0; x<64; ++x)
+     {
+         for (int y=0; y<64; ++y)
+         {
+             [_cells[x][y] pushVersion];
+         }
+    }
+    
     CRColourCell* firstCell=_cells[0][0];
     
     int oldColour=firstCell.colour;

@@ -39,6 +39,12 @@
     [_gameView restart];
 }
 
+-(IBAction)undoButtonPressed:(id)sender
+{
+    [_gameView undo];
+}
+
+
 
 
 @end

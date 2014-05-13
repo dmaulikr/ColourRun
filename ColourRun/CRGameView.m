@@ -59,7 +59,7 @@ XY XYMake(int x, int y)
             {4,2},
             {4,4},
             {4,6},
-            {5,1},
+            {8,4},
             {5,2},
             {5,4},
             {5,6},
@@ -306,6 +306,14 @@ XY XYMake(int x, int y)
                     case 3:
                         CGContextSetRGBFillColor(context,1.0,1.0,0.0,alpha);
                         break;
+                    case 4:
+                            //                        CGContextSetRGBFillColor(context,0x99f/255,0x33f/255,0.0,alpha);
+                        CGContextSetRGBFillColor(context,0xD6/255.0,0,0xD6/255.0,alpha);//Purple
+                        break;
+                    case 5:
+                        CGContextSetRGBFillColor(context,0xFF/255.0,0x66/255.0,0x00/255.0,1.0);//Brown
+                            //CGContextSetRGBFillColor(context,0.0,0.0,0.0,alpha);
+                        break;
                         
                     default:
                         CGContextSetRGBFillColor(context,0.0,0.0,0.0,alpha);
@@ -342,7 +350,7 @@ XY XYMake(int x, int y)
     
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+/*- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch* touch=[touches anyObject];
     
@@ -362,7 +370,7 @@ XY XYMake(int x, int y)
         
         [self setNeedsDisplay];
     }
-}
+}*/
 
 
 -(void)setColour:(int)newColour
@@ -382,5 +390,13 @@ XY XYMake(int x, int y)
     _colourGrid=[[CRColourGrid alloc]initWithWidth:MAX_WIDTH andHeight:MAX_HEIGHT];
     [self setNeedsDisplay];
 }
+
+
+-(void)undo
+{
+    [_colourGrid undo];
+    [self setNeedsDisplay];
+}
+
 
 @end

@@ -10,7 +10,7 @@
 
 @interface CRLozengeImage : NSObject
 {
-    UIImage* _images[4];
+    UIImage* _images[6];
 }
 
 -(id)initWithRow:(int)row andColumn:(int)col;

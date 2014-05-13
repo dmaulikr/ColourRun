@@ -25,6 +25,9 @@
 -(void)setColour:(int)newColour;
 @property int count;
 
+-(void)undo;
+
+
 
 
 

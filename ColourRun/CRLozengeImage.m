@@ -27,25 +27,19 @@ int const YELLOW=3;
     
     if (self)
     {
-            //        NSString* imageName=[NSString stringWithFormat:@"overall2-%@_r%d_c%d.png",colour,row,col];
-        
         _images[BLUE]=[self loadImageWithColour:@"blue" andRow:row andColumn:col];
         _images[YELLOW]=[self loadImageWithColour:@"yellow" andRow:row andColumn:col];
         _images[GREEN]=[self loadImageWithColour:@"green" andRow:row andColumn:col];
         _images[RED]=[self loadImageWithColour:@"red" andRow:row andColumn:col];
-        
-
+        _images[4]=[self loadImageWithColour:@"purple" andRow:row andColumn:col];
+        _images[5]=[self loadImageWithColour:@"orange" andRow:row andColumn:col];
     }
     return self;
 }
 
 -(UIImage*)loadImageWithColour:(NSString*)colour andRow:(int)row andColumn:(int)col;
 {
-        //NSString* imageName=[NSString stringWithFormat:@"overall2-%@_r%d_c%d.png",colour,row,col];
     NSString* imageName=[NSString stringWithFormat:@"overall2-%@_r%d_c%d.png",colour,row,col];
-    
-
-        //overall2-yellow_r1_c4_
     
     UIImage* image=[UIImage imageNamed:imageName];
     
