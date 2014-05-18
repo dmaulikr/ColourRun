@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CRColourCell.h"
+#import "CRLevel.h" 
 
 @interface CRColourGrid : NSObject
 {
@@ -18,14 +19,23 @@
     CRColourCell* _undoCells[64][64];
 }
 
--(id)initWithWidth:(int)width andHeight:(int)height;
+
+-(id)initWithLevel:(CRLevel*)newLevel;
+
+    //-(id)initWithWidth:(int)width andHeight:(int)height;
 -(CRColourCell*) colourAtLocationX:(int)x andY:(int)y;
 -(BOOL)locationMatchesColour:(int)colour atX:(int)x andY:(int)y;
 
--(void)setColour:(int)newColour;
 @property int count;
 
 -(void)undo;
+
+-(void)changeSelectedToColour:(int)newColour;
+-(void)checkCellsSurroundingSelection;
+
+-(int)height;
+-(int)width;
+
 
 
 

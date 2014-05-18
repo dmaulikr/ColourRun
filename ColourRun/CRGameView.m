@@ -9,11 +9,12 @@
 #import "CRGameView.h"
 #import "CRLozengeImage.h"
 #import "UIImage+Color.h"
+#import "CRLevel.h"
 
 @implementation CRGameView
 
-int MAX_HEIGHT=10;
-int MAX_WIDTH=10;
+    //int MAX_HEIGHT=10;
+    //int MAX_WIDTH=10;
 
 
 
@@ -104,10 +105,13 @@ XY XYMake(int x, int y)
             _images[i][6]=_images[i][2];
             _images[i][7]=rawImages[12];
         }
+        
+        _level=[[CRLevel alloc]init];
+
 
         
-        _cellHeight=self.frame.size.height/MAX_HEIGHT;
-        _cellWidth=self.frame.size.width/MAX_WIDTH;
+        _cellHeight=self.frame.size.height/_level.height;
+        _cellWidth=self.frame.size.width/_level.width;
         
         
         _algaeImg[BLUE]=[UIImage imageNamed:@"algae-b.png"];
@@ -249,9 +253,9 @@ XY XYMake(int x, int y)
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    for (int x=0; x<MAX_WIDTH; ++x)
+    for (int x=0; x<_colourGrid.width; ++x)
     {
-        for (int y=0; y<MAX_HEIGHT; ++y)
+        for (int y=0; y<_colourGrid.height; ++y)
         {
             CGRect rectangle = CGRectMake(x*_cellWidth, y*_cellHeight, _cellWidth, _cellHeight);
             
@@ -311,7 +315,7 @@ XY XYMake(int x, int y)
                         CGContextSetRGBFillColor(context,0xD6/255.0,0,0xD6/255.0,alpha);//Purple
                         break;
                     case 5:
-                        CGContextSetRGBFillColor(context,0xFF/255.0,0x66/255.0,0x00/255.0,1.0);//Brown
+                        CGContextSetRGBFillColor(context,0xCC/255.0,0xCC/255.0,0xCC/255.0,1.0);//Brown
                             //CGContextSetRGBFillColor(context,0.0,0.0,0.0,alpha);
                         break;
                         
@@ -328,11 +332,12 @@ XY XYMake(int x, int y)
                     //CGContextFillRect(context, rectangle);
                 
                 BOOL a=(y==0 || colourCell.colour!=[_colourGrid colourAtLocationX:x andY:y-1].colour);
-                BOOL b=(y==MAX_HEIGHT-1 || colourCell.colour!=[_colourGrid colourAtLocationX:x andY:y+1].colour);
+                BOOL b=(y==_colourGrid.height-1 || colourCell.colour!=[_colourGrid colourAtLocationX:x andY:y+1].colour);
                 BOOL l=(x==0  || colourCell.colour!=[_colourGrid colourAtLocationX:x-1 andY:y].colour);
-                BOOL r=(x==MAX_WIDTH-1 || colourCell.colour!=[_colourGrid colourAtLocationX:x+1 andY:y].colour);
+                BOOL r=(x==_colourGrid.width-1 || colourCell.colour!=[_colourGrid colourAtLocationX:x+1 andY:y].colour);
                 
-                if (!colourCell.inSelection) {
+                if (!colourCell.inSelection)
+                {
                     a=b=l=r=NO;
                 }
                 
@@ -375,9 +380,12 @@ XY XYMake(int x, int y)
 
 -(void)setColour:(int)newColour
 {
-    [_colourGrid setColour:newColour];
-
+        //    [_colourGrid setColour:newColour];
+    [_colourGrid changeSelectedToColour:newColour];
     [self setNeedsDisplay];
+    [_colourGrid checkCellsSurroundingSelection];
+
+        //[self setNeedsDisplay];
 }
 
 -(int)count
@@ -387,7 +395,9 @@ XY XYMake(int x, int y)
 
 -(void)restart
 {
-    _colourGrid=[[CRColourGrid alloc]initWithWidth:MAX_WIDTH andHeight:MAX_HEIGHT];
+    
+        //    _colourGrid=[[CRColourGrid alloc]initWithWidth:MAX_WIDTH andHeight:MAX_HEIGHT];
+    _colourGrid=[[CRColourGrid alloc]initWithLevel:_level];
     [self setNeedsDisplay];
 }
 

@@ -19,6 +19,8 @@
     int _cellWidth;
     CRLozengeImage* _images[4][8];
     UIImage* _algaeImg[4];
+    CRLevel* _level;
+
 }
 
 -(void)setColour:(int)newColour;

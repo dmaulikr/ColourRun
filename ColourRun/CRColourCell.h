@@ -30,6 +30,9 @@ typedef struct CellState CellState;
 
 -(id)initWithX:(int)x andY:(int)y;
 
+-(id)initWithX:(int)x andY:(int)y andColour:(int)colour;
+
+
 @property int x;
 @property int y;
 

@@ -32,7 +32,7 @@ int const YELLOW=3;
         _images[GREEN]=[self loadImageWithColour:@"green" andRow:row andColumn:col];
         _images[RED]=[self loadImageWithColour:@"red" andRow:row andColumn:col];
         _images[4]=[self loadImageWithColour:@"purple" andRow:row andColumn:col];
-        _images[5]=[self loadImageWithColour:@"orange" andRow:row andColumn:col];
+        _images[5]=[self loadImageWithColour:@"grey" andRow:row andColumn:col];
     }
     return self;
 }

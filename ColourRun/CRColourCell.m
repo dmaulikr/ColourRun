@@ -35,6 +35,25 @@
 }
 
 
+-(id)initWithX:(int)x andY:(int)y andColour:(int)colour
+{
+    self=[super init];
+    
+    if (self)
+    {
+        _state=[[CRColourCellState alloc]init];
+        _prevStates=[[NSMutableArray alloc]init];
+        
+        _state.colour=colour;
+        _x=x;
+        _y=y;
+        _state.inSelection=NO;
+    }
+    
+    return self;
+}
+
+
 -(void)pushVersion
 {
     [_prevStates addObject:_state];

@@ -11,11 +11,45 @@
 @implementation CRColourGrid
 @synthesize count=_count;
 
+
+-(id)initWithLevel:(CRLevel*)newLevel
+{
+    self=[super init];
+    
+    if (self)
+    {
+        _width=newLevel.width;
+        _height=newLevel.height;
+        _count=0;
+        
+        for (int x=0; x<_width; ++x)
+        {
+            for (int y=0;y<_height;++y)
+            {
+                CRColourCell* newCell=[[CRColourCell alloc]initWithX:x andY:y andColour:[newLevel colourAtX:x andY:y]];
+                                       
+                                       //[newLevel colourAt:x andY:y]];
+                
+                _cells[x][y]=newCell;
+            }
+        }
+        
+        _cells[0][0].inSelection=YES;
+        [self checkCellsSurroundingSelection];
+        
+    }
+    
+    return self;
+}
+
+
+
 -(id)initWithWidth:(int)width andHeight:(int)height
 {
     self=[super init];
     
-    if (self) {
+    if (self)
+    {
         _width=width;
         _height=height;
         _count=0;
@@ -31,10 +65,8 @@
         }
         
         _cells[0][0].inSelection=YES;
-        [self checkSurroundingCellsFromX:0 andY:0 fromColour:-1 toColour:_cells[0][0].colour fill:NO];
-        
-        
-            //[self setColour:_cells[0][0].colour];
+        [self checkCellsSurroundingSelection];
+
     }
     
     return self;
@@ -46,30 +78,6 @@
 }
 
 
--(void)checkSurroundingCellAtX:(int)x andY:(int)y fromColour:(int)oldColour  toColour:(int)newColour fill:(BOOL)fill
-{
-    if (x>=_width ||x<0) {
-        return;
-    }
-    
-    if (y>=_height ||y<0) {
-        return;
-    }
-    
-    CRColourCell* compareCell=_cells[x][y];
-    
-    if (fill && compareCell.colour==oldColour)
-    {
-        compareCell.colour=newColour;
-        compareCell.inSelection=YES;
-        [self checkSurroundingCellsFromX:x andY:y fromColour:oldColour toColour:newColour fill:YES];
-    }
-    if(compareCell.colour==newColour && !compareCell.inSelection)
-    {
-        compareCell.inSelection=YES;
-        [self checkSurroundingCellsFromX:x andY:y fromColour:oldColour toColour:newColour fill:NO];
-    }
-}
 
 
 -(BOOL)locationMatchesColour:(int)colour atX:(int)x andY:(int)y
@@ -82,15 +90,6 @@
     return (_cells[x][y].colour==colour);
 }
 
-
-
--(void)checkSurroundingCellsFromX:(int)x andY:(int)y fromColour:(int)oldColour  toColour:(int)newColour fill:(BOOL)fill
-{
-    [self checkSurroundingCellAtX:x+1 andY:y fromColour:oldColour toColour:newColour fill:fill];
-    [self checkSurroundingCellAtX:x-1 andY:y fromColour:oldColour toColour:newColour fill:fill];
-    [self checkSurroundingCellAtX:x andY:y+1 fromColour:oldColour toColour:newColour fill:fill];
-    [self checkSurroundingCellAtX:x andY:y-1 fromColour:oldColour toColour:newColour fill:fill];
-}
 
 
 -(void)undo
@@ -106,29 +105,86 @@
 
 
 
--(void)setColour:(int)newColour
+-(void)pushVersion
 {
-     for (int x=0; x<64; ++x)
-     {
-         for (int y=0; y<64; ++y)
-         {
-             [_cells[x][y] pushVersion];
-         }
+    for (int x=0; x<64; ++x)
+    {
+        for (int y=0; y<64; ++y)
+        {
+            [_cells[x][y] pushVersion];
+        }
+    }
+}
+
+
+
+
+
+-(void)checkCellsSurroundingSelection
+{
+    for (int x=0; x<_width; ++x)
+    {
+        for (int y=0;y<_height;++y)
+        {
+            if (_cells[x][y].inSelection)
+            {
+                [self checkCellsAroundX:x andY:y matchesColour:_cells[x][y].colour];
+            }
+        }
     }
     
-    CRColourCell* firstCell=_cells[0][0];
-    
-    int oldColour=firstCell.colour;
-    
-    if(oldColour==newColour)
+}
+
+
+-(void)checkIfCellAtX:(int)x andY:(int)y matchesColour:(int)colour
+{
+    if (x<0 || y<0 || x>=_width || y>=_height || _cells[x][y].inSelection || _cells[x][y].colour!=colour)
     {
+            //reached cell that doesn't need to be checked, so quit
         return;
     }
     
-    firstCell.colour=newColour;
-    
-    [self checkSurroundingCellsFromX:0 andY:0 fromColour:oldColour toColour:newColour fill:YES];
+    _cells[x][y].inSelection=true;
+    [self checkCellsAroundX:x andY:y matchesColour:colour];
 }
+
+
+-(void)checkCellsAroundX:(int)x andY:(int)y matchesColour:(int)colour
+{
+    [self checkIfCellAtX:x-1 andY:y matchesColour:colour];
+    [self checkIfCellAtX:x+1 andY:y matchesColour:colour];
+    [self checkIfCellAtX:x andY:y-1 matchesColour:colour];
+    [self checkIfCellAtX:x andY:y+1 matchesColour:colour];
+}
+
+
+-(void)changeSelectedToColour:(int)newColour
+{
+    [self pushVersion];
+    
+    
+    for (int x=0; x<_width; ++x)
+    {
+        for (int y=0;y<_height;++y)
+        {
+            if (_cells[x][y].inSelection)
+            {
+                _cells[x][y].colour=newColour;
+            }
+        }
+    }
+}
+
+-(int)height
+{
+    return _height;
+}
+
+-(int)width
+{
+    return _width;
+}
+
 
 
 

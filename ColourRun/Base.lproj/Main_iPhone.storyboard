@@ -111,7 +111,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOP-BG-RgV" customClass="CRColourButton">
                                 <rect key="frame" x="231" y="412" width="52" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="button-orange.png">
+                                <state key="normal" title="Button" image="button-grey.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -148,12 +148,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1054" y="-1"/>
         </scene>
     </scenes>
     <resources>
         <image name="button-blue.png" width="128" height="128"/>
         <image name="button-green.png" width="128" height="128"/>
-        <image name="button-orange.png" width="128" height="128"/>
+        <image name="button-grey.png" width="128" height="128"/>
         <image name="button-purple.png" width="128" height="128"/>
         <image name="button-red.png" width="128" height="128"/>
         <image name="button-yellow.png" width="128" height="128"/>
