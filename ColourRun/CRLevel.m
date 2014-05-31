@@ -55,7 +55,104 @@
     return self;
 }
 
+
+-(id) initWithWidth:(int)width andHeight:(int)height andColours:(NSArray*)data
+{
+    self=[super init];
     
+    if (self)
+    {
+        _width=width;
+        _height=height;
+    
+        int y=0;
+        for (NSDictionary* line in data)
+        {
+            NSString* row=[line objectForKey:@"row"];
+            NSUInteger len = [row length];
+        
+            for(int x = 0; x < len; x++)
+            {
+                NSString *number = [row substringWithRange:NSMakeRange(x, 1)];
+                _colours[x][y]=[number intValue];
+            }
+        
+            ++y;
+        }
+    }
+    
+    return self;
+}
+
+
+
+-(id)initWithLevel:(int)levelNum
+{
+    self=[super init];
+    
+    if (self)
+    {
+        
+        NSString *file = [[NSBundle mainBundle] pathForResource:@"example" ofType:@"json"];
+        
+        NSData *jsonData = [NSData dataWithContentsOfFile:file];
+        
+        NSError *error = nil;
+        NSDictionary *currentObject = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+        if(error)
+        {
+            NSLog(@"%@",error);
+        }
+        
+        /*
+         NSArray *levels = [currentObject objectForKey:@"levels"];
+         
+         for (NSDictionary* line in levels)
+         {
+         NSLog(@"Line %@",[line objectForKey:@"1"]);
+         }
+         
+         
+         */
+        
+        
+        NSDictionary *levels = [currentObject objectForKey:@"levels"];
+        NSDictionary *level=[levels objectForKey:[NSString stringWithFormat:@"%d",levelNum]];
+        _width=[[level objectForKey:@"width"] intValue];
+        _height=[[level objectForKey:@"width"] intValue];
+        NSArray* data=[level objectForKey:@"rows"];
+        
+        
+        
+            //        NSLog(@"Level %d,%d",width,height);
+        int y=0;
+        for (NSDictionary* line in data)
+        {
+            NSString* row=[line objectForKey:@"row"];
+            
+            NSUInteger len = [row length];
+                //            unichar buffer[len+1];
+            
+                //[row getCharacters:buffer range:NSMakeRange(0, len)];
+            
+                //NSLog(@"getCharacters:range: with unichar buffer");
+            
+            for(int i = 0; i < len; i++)
+            {
+                NSString *number = [row substringWithRange:NSMakeRange(i, 1)];
+                _colours[i][y]=[number intValue];
+            }
+            
+            ++y;
+        }
+        
+        
+    }
+    
+    return self;
+}
+
+
 
 
 -(int) width

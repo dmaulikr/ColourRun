@@ -16,6 +16,11 @@
     int _goesAllowed[3];
 }
 
+-(id) initWithWidth:(int)width andHeight:(int)height andColours:(NSArray*)data;
+
+
+-(id)initWithLevel:(int)levelNum;
+
 @property (readonly) int width;
 @property (readonly) int height;
 

@@ -49,6 +49,10 @@ XY XYMake(int x, int y)
     
     if (self)
     {
+        _levelLoader=[CRLevelLoader loader];//[[CRLevelLoader alloc]init];
+        
+            //        [self setLevel:1];
+        
         CRLozengeImage* rawImages[13];
         
         int imgNums[13][2]=
@@ -106,12 +110,6 @@ XY XYMake(int x, int y)
             _images[i][7]=rawImages[12];
         }
         
-        _level=[[CRLevel alloc]init];
-
-
-        
-        _cellHeight=self.frame.size.height/_level.height;
-        _cellWidth=self.frame.size.width/_level.width;
         
         
         _algaeImg[BLUE]=[UIImage imageNamed:@"algae-b.png"];
@@ -152,9 +150,6 @@ XY XYMake(int x, int y)
                                     *b=0;
                                     
                                 }];
-        
-
-        [self restart];
     }
     
     return self;
@@ -380,12 +375,17 @@ XY XYMake(int x, int y)
 
 -(void)setColour:(int)newColour
 {
-        //    [_colourGrid setColour:newColour];
+    if ([_colourGrid colourAtLocationX:0 andY:0].colour==newColour)
+    {
+            //Don't change to existing colour
+        return;
+    }
+    
     [_colourGrid changeSelectedToColour:newColour];
     [self setNeedsDisplay];
     [_colourGrid checkCellsSurroundingSelection];
-
-        //[self setNeedsDisplay];
+    
+    _colourGrid.count++;
 }
 
 -(int)count
@@ -393,10 +393,15 @@ XY XYMake(int x, int y)
     return _colourGrid.count;
 }
 
--(void)restart
+-(void)restart:(int)levelNum
 {
+    _level=[_levelLoader loadLevel:levelNum];
     
-        //    _colourGrid=[[CRColourGrid alloc]initWithWidth:MAX_WIDTH andHeight:MAX_HEIGHT];
+        //[[CRLevel alloc]initWithLevel:levelNum];
+    
+    _cellHeight=self.frame.size.height/_level.height;
+    _cellWidth=self.frame.size.width/_level.width;
+    
     _colourGrid=[[CRColourGrid alloc]initWithLevel:_level];
     [self setNeedsDisplay];
 }

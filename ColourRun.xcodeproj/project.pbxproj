@@ -15,7 +15,7 @@
 		28196863190C57EF003EBD2F /* CRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28196862190C57EF003EBD2F /* CRAppDelegate.m */; };
 		28196866190C57EF003EBD2F /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28196864190C57EF003EBD2F /* Main_iPhone.storyboard */; };
 		28196869190C57EF003EBD2F /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28196867190C57EF003EBD2F /* Main_iPad.storyboard */; };
-		2819686C190C57EF003EBD2F /* CRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2819686B190C57EF003EBD2F /* CRViewController.m */; };
+		2819686C190C57EF003EBD2F /* CRGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2819686B190C57EF003EBD2F /* CRGameViewController.m */; };
 		2819686E190C57EF003EBD2F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2819686D190C57EF003EBD2F /* Images.xcassets */; };
 		28196875190C57EF003EBD2F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28196874190C57EF003EBD2F /* XCTest.framework */; };
 		28196876190C57EF003EBD2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28196852190C57EF003EBD2F /* Foundation.framework */; };
@@ -151,6 +151,10 @@
 		283466471922C3B000991E62 /* overall2-grey_r8_c4.png in Resources */ = {isa = PBXBuildFile; fileRef = 283466391922C3B000991E62 /* overall2-grey_r8_c4.png */; };
 		283466491922C3BD00991E62 /* button-grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 283466481922C3BD00991E62 /* button-grey.png */; };
 		284FA2F91928A62C003F06B5 /* CRLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 284FA2F81928A62C003F06B5 /* CRLevel.m */; };
+		284FA2FC192A1034003F06B5 /* CRLevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 284FA2FB192A1034003F06B5 /* CRLevelLoader.m */; };
+		284FA2FE192B38E4003F06B5 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 284FA2FD192B3725003F06B5 /* example.json */; };
+		284FA30219313669003F06B5 /* CRLevelSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284FA30119313669003F06B5 /* CRLevelSelectViewController.m */; };
+		284FA3051931388E003F06B5 /* CRLevelSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 284FA3041931388E003F06B5 /* CRLevelSelectCell.m */; };
 		28A0A7FF190D9A12007AD860 /* CRColourButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A0A7FE190D9A12007AD860 /* CRColourButton.m */; };
 		28A0A8451912E386007AD860 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 28A0A8441912E386007AD860 /* circle.png */; };
 		28A0A8481912E574007AD860 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A0A8471912E574007AD860 /* UIImage+Color.m */; };
@@ -179,8 +183,8 @@
 		28196862190C57EF003EBD2F /* CRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CRAppDelegate.m; sourceTree = "<group>"; };
 		28196865190C57EF003EBD2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		28196868190C57EF003EBD2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		2819686A190C57EF003EBD2F /* CRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRViewController.h; sourceTree = "<group>"; };
-		2819686B190C57EF003EBD2F /* CRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CRViewController.m; sourceTree = "<group>"; };
+		2819686A190C57EF003EBD2F /* CRGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRGameViewController.h; sourceTree = "<group>"; };
+		2819686B190C57EF003EBD2F /* CRGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CRGameViewController.m; sourceTree = "<group>"; };
 		2819686D190C57EF003EBD2F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		28196873190C57EF003EBD2F /* ColourRunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColourRunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28196874190C57EF003EBD2F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -322,6 +326,14 @@
 		283466481922C3BD00991E62 /* button-grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-grey.png"; sourceTree = "<group>"; };
 		284FA2F71928A62C003F06B5 /* CRLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRLevel.h; sourceTree = "<group>"; };
 		284FA2F81928A62C003F06B5 /* CRLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRLevel.m; sourceTree = "<group>"; };
+		284FA2FA192A1034003F06B5 /* CRLevelLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRLevelLoader.h; sourceTree = "<group>"; };
+		284FA2FB192A1034003F06B5 /* CRLevelLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRLevelLoader.m; sourceTree = "<group>"; };
+		284FA2FD192B3725003F06B5 /* example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
+		284FA2FF19309E72003F06B5 /* example2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example2.json; sourceTree = "<group>"; };
+		284FA30019313669003F06B5 /* CRLevelSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRLevelSelectViewController.h; sourceTree = "<group>"; };
+		284FA30119313669003F06B5 /* CRLevelSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRLevelSelectViewController.m; sourceTree = "<group>"; };
+		284FA3031931388E003F06B5 /* CRLevelSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRLevelSelectCell.h; sourceTree = "<group>"; };
+		284FA3041931388E003F06B5 /* CRLevelSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRLevelSelectCell.m; sourceTree = "<group>"; };
 		28A0A7FD190D9A12007AD860 /* CRColourButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRColourButton.h; sourceTree = "<group>"; };
 		28A0A7FE190D9A12007AD860 /* CRColourButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRColourButton.m; sourceTree = "<group>"; };
 		28A0A8441912E386007AD860 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
@@ -409,6 +421,8 @@
 				2819685B190C57EF003EBD2F /* InfoPlist.strings */,
 				2819685E190C57EF003EBD2F /* main.m */,
 				28196860190C57EF003EBD2F /* ColourRun-Prefix.pch */,
+				284FA2FD192B3725003F06B5 /* example.json */,
+				284FA2FF19309E72003F06B5 /* example2.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -442,6 +456,8 @@
 				283465BE191E58AC00991E62 /* CRColourCellState.m */,
 				284FA2F71928A62C003F06B5 /* CRLevel.h */,
 				284FA2F81928A62C003F06B5 /* CRLevel.m */,
+				284FA2FA192A1034003F06B5 /* CRLevelLoader.h */,
+				284FA2FB192A1034003F06B5 /* CRLevelLoader.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -458,6 +474,8 @@
 				28A0A7FE190D9A12007AD860 /* CRColourButton.m */,
 				283464E7191C1D7F00991E62 /* CRLozengeImage.h */,
 				283464E8191C1D7F00991E62 /* CRLozengeImage.m */,
+				284FA3031931388E003F06B5 /* CRLevelSelectCell.h */,
+				284FA3041931388E003F06B5 /* CRLevelSelectCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -465,8 +483,10 @@
 		28196892190CF8C0003EBD2F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2819686A190C57EF003EBD2F /* CRViewController.h */,
-				2819686B190C57EF003EBD2F /* CRViewController.m */,
+				284FA30019313669003F06B5 /* CRLevelSelectViewController.h */,
+				284FA30119313669003F06B5 /* CRLevelSelectViewController.m */,
+				2819686A190C57EF003EBD2F /* CRGameViewController.h */,
+				2819686B190C57EF003EBD2F /* CRGameViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -684,6 +704,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				284FA2FE192B38E4003F06B5 /* example.json in Resources */,
 				283466231922C0D600991E62 /* overall2-orange_r5_c4.png in Resources */,
 				283466261922C0D600991E62 /* overall2-orange_r6_c5.png in Resources */,
 				283466491922C3BD00991E62 /* button-grey.png in Resources */,
@@ -832,6 +853,8 @@
 			files = (
 				2819688C190C5A72003EBD2F /* CRColourGrid.m in Sources */,
 				2819688F190C5EAD003EBD2F /* CRGameView.m in Sources */,
+				284FA30219313669003F06B5 /* CRLevelSelectViewController.m in Sources */,
+				284FA2FC192A1034003F06B5 /* CRLevelLoader.m in Sources */,
 				28196895190CF962003EBD2F /* CRColourCell.m in Sources */,
 				283464E9191C1D7F00991E62 /* CRLozengeImage.m in Sources */,
 				2819685F190C57EF003EBD2F /* main.m in Sources */,
@@ -840,7 +863,8 @@
 				284FA2F91928A62C003F06B5 /* CRLevel.m in Sources */,
 				28A0A7FF190D9A12007AD860 /* CRColourButton.m in Sources */,
 				283465BF191E58AC00991E62 /* CRColourCellState.m in Sources */,
-				2819686C190C57EF003EBD2F /* CRViewController.m in Sources */,
+				2819686C190C57EF003EBD2F /* CRGameViewController.m in Sources */,
+				284FA3051931388E003F06B5 /* CRLevelSelectCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

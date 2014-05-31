@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CRColourGrid.h"
 #import "CRLozengeImage.h"
+#import "CRLevelLoader.h"
 
 
 
@@ -20,13 +21,16 @@
     CRLozengeImage* _images[4][8];
     UIImage* _algaeImg[4];
     CRLevel* _level;
-
+    int _levelNum;
+    CRLevelLoader* _levelLoader;
 }
 
 -(void)setColour:(int)newColour;
--(void)restart;
+-(void)restart:(int)levelNum;
 -(void)undo;
 @property (readonly) int count;
+
+
 
 
 

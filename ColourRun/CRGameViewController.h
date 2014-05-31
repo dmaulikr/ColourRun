@@ -9,13 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "CRGameView.h"
 
-@interface CRViewController : UIViewController
+@interface CRGameViewController : UIViewController
 {
     IBOutlet CRGameView* _gameView;
     IBOutlet UILabel* _countLabel;
+    int _levelNum;
 }
 
 -(IBAction)buttonPressed:(id)sender;
 -(IBAction)undoButtonPressed:(id)sender;
+
+-(void)setLevel:(int)levelNum;
+
 
 @end
